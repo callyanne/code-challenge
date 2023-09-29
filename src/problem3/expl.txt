@@ -1,0 +1,37 @@
+Problem 3 Explanation:
+
+Issue 1: WalletBalance has no blockchain attribute
+
+-- On line 52, there is an attempt to access the 'blockchain' attribute of balance, which is of type WalletBalance, which does not exist.
+To solve this, the blockchain attribute has been added into the WalletBalance interface.
+
+Issue 2: lhsPriority used but not declared 
+
+-- On line 53 of the original code, the variable 'lhsPriority' is called but it has not been declared. This gives rise to an undefined value.
+Following the logic of the code, the variable should have been 'balancePriority' instead.
+
+Issue 3: Line 104 should be formattedBalances, not sortedBalances
+
+-- On line 104 of the solution, the input parameter, balance, should be of interface FormattedWalletBalance. Hence, formattedBalances, which contains
+a list of FormattedWalletBalance should be used instead of sortedBalances.
+
+Inefficiency 1: Instead of using a switch statement to handle the searching of priority, we should use a dictionary to improve efficiency
+
+-- On line 33 of the original code, a switch statement is used to return the priorities of each blockchain currency. If there is a long list of 
+currencies, doing this could cause the code to be rather verbose and inefficient. Instead, we can use a dictionary, with the key being the currency
+name and the value being the priority. This makes the process of searching for the related priority value more efficient. 
+
+Assumption 1: The WalletRow component is defined in a separate file and imported
+
+-- The WalletRow is utilised in the code without any definition of the component.
+
+Assumption 2: The useWalletBalances() function is defined in a separated file and imported
+
+-- The useWalletBalances() function is used to populate the balances which are then filtered and sorted. However, it is not defined in the code.
+
+Assumption 3: BoxProps is an imported component from another file
+
+Additional notes:
+
+-- Since Props does not have any additional attributes as compared to BoxProps, it is possible to remove the interface and just use BoxProps directly.
+I am unsure about this hence I did not update the code with this.
